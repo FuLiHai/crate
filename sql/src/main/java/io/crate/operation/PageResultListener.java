@@ -23,7 +23,7 @@
 package io.crate.operation;
 
 /**
- * An interface to signal that more paging data is available.
+ * An interface to signal more paging data can be retrieved.
  * The PageResultListener has to send a request to ask for more data from the source.
  */
 public interface PageResultListener {
