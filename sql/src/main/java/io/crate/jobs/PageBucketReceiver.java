@@ -56,6 +56,14 @@ import java.util.Collection;
  */
 public interface PageBucketReceiver {
 
+    /**
+     * Receives a bucket from an upstream which holds result data. This method may
+     * be called multiple times with the same bucketIdx if there are multiple pages.
+     * @param bucketIdx A bucket id which uniquely identifies all buckets of this page.
+     * @param rows The bucket which holds result rows.
+     * @param isLast Indicates whether this is the last bucket with this id.
+     * @param pageResultListener The ResultListener which is informed if more data is available.
+     */
     void setBucket(int bucketIdx, Bucket rows, boolean isLast, PageResultListener pageResultListener);
 
     void failure(int bucketIdx, Throwable throwable);
