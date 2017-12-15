@@ -23,16 +23,15 @@
 package io.crate.operation;
 
 /**
- * An interface to signal more paging data can be retrieved.
- * The PageResultListener has to send a request to ask for more data from the source.
+ * An interface to signal more paging data is needed.
+ * The PageResultListener has to take action (e.g. send a request to ask for more data from the source).
  */
 public interface PageResultListener {
 
     /**
-     * Indicates that more data can be received. The implementation has to
-     * trigger an action to request more data.
-     * See {@link io.crate.executor.transport.distributed.TransportDistributedResultAction.SendResponsePageResultListener}
-     * @param needMore True if more data can be requested, false otherwise.
+     * Indicates that more data is needed. The implementation has to trigger an action to request more data.
+     * Used together with {@link io.crate.jobs.PageBucketReceiver}.
+     * @param needMore True if more data is needed and should be requested, false otherwise.
      */
     void needMore(boolean needMore);
 }
